@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "FinanceAfterLoginPage";
+}
+
+@*<h2>FinanceAfterLoginPage</h2>*@
+
+
+@*<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js">
+        $(document).ready(function () {
+            alert("You are authorised to access Finance portal");
+
+        });
+    </script>*@
+
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <script type="text/javascript">
+        alert("@ViewBag.Message");
+    </script>
+}
+
+<h2>Welcome to Finance portal...</h2>
+
+<br />
+<br />
+
+<div>
+    @Html.ActionLink("Go Back To Main Page", "NormalUerLoginPage", "Home")
+</div>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserMgmtPortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AppUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RoleMappings" Relationship="Self.FK_RoleMapping_AppUser" FromRole="AppUser" ToRole="RoleMapping" />
+  </EntityType>
+  <EntityType Name="RoleMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK_RoleMapping_AppUser" FromRole="RoleMapping" ToRole="AppUser" />
+    <NavigationProperty Name="UserRole" Relationship="Self.FK_RoleMapping_UserRole" FromRole="RoleMapping" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="UserApplication">
+    <Key>
+      <PropertyRef Name="UserApplicationId" />
+    </Key>
+    <Property Name="UserApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RoleMappings" Relationship="Self.FK_RoleMapping_UserRole" FromRole="UserRole" ToRole="RoleMapping" />
+  </EntityType>
+  <Association Name="FK_RoleMapping_AppUser">
+    <End Role="AppUser" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="RoleMapping" Type="Self.RoleMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="RoleMapping">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleMapping_UserRole">
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
+    <End Role="RoleMapping" Type="Self.RoleMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="RoleMapping">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UserDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
+    <EntitySet Name="RoleMappings" EntityType="Self.RoleMapping" />
+    <EntitySet Name="UserApplications" EntityType="Self.UserApplication" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <AssociationSet Name="FK_RoleMapping_AppUser" Association="Self.FK_RoleMapping_AppUser">
+      <End Role="AppUser" EntitySet="AppUsers" />
+      <End Role="RoleMapping" EntitySet="RoleMappings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleMapping_UserRole" Association="Self.FK_RoleMapping_UserRole">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="RoleMapping" EntitySet="RoleMappings" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
