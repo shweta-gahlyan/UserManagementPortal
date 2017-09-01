@@ -1,0 +1,68 @@
+﻿@model  UserMgmtMVC.AppUser
+
+@{
+    ViewBag.Title = "GetDetails";
+}
+
+@*<h2>GetDetails</h2>*@
+
+<div>
+    <h4>Personal details :</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <div @*class="col-md-offset-1 col-md-3"*@>
+        @Html.ActionLink("Edit Your Details", "Edit", new { /* id = Model.PrimaryKey */ id = Session["UserId"] })
+    </div>   
+  
+</p>
+
+<br />
+<br />
+<br />
+
+<div>
+    @Html.ActionLink("Go Back ", "NormalUerLoginPage")
+</div>

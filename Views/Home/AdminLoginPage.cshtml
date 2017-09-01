@@ -1,0 +1,36 @@
+﻿@model UserMgmtMVC.AppUser
+
+@{
+    ViewBag.Title = "AdminLoginPage";
+}
+
+<h2>Admin Login Page</h2>
+<br />
+
+
+<div>
+    @Html.ActionLink("Personal Details", "GetDetails", new { id = Session["UserId"] })
+</div>
+
+    <br />
+    <br />
+    <div>
+        @Html.ActionLink("Go Back", "NormalUerLoginPage")
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<h4 style="text-align:right">
+            Hello @Session["LoggedUsername"]
+        </h4>*@

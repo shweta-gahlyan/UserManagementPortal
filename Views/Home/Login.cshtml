@@ -1,0 +1,89 @@
+﻿
+@model UserMgmtMVC.Models.AppUserViewModel
+@*@model UserMgmtMVC.AppUser*@
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+@*<script type="text/javascript">
+        function preventBack(){window.history.forward();}
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null};
+</script>*@
+
+
+<h1 style="text-align:center">User Management Portal</h1>
+
+<br />
+<br />
+
+
+@Html.Partial("_LoginPartialView")
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<br />
+<br />
+<h2 style="text-align:center">Login</h2>
+
+<br />
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true);
+    if (ViewBag.Message != null)
+    {
+        <div style="border:solid 1px red">
+            @ViewBag.Message
+
+        </div>
+    }
+
+    <div style="color:red">
+        @ViewData["Error"]
+    </div>
+    <table align="center">
+        <tr>
+            <td>@Html.LabelFor(a => a.Username)</td>
+            <td>@Html.TextBoxFor(a => a.Username)</td>
+            <td>@Html.ValidationMessageFor(a => a.Username)</td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Password)</td>
+            <td>@Html.TextBoxFor(a => a.Password)</td>
+            <td>@Html.ValidationMessageFor(a => a.Password)</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Login" />
+            </td>
+        </tr>
+    </table>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
+
+
+
+
+

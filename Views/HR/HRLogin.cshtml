@@ -1,0 +1,23 @@
+﻿@model UserMgmtMVC.Models.AppUserViewModel
+
+@{
+    ViewBag.Title = "HRLogin";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <script type="text/javascript">
+        alert("@ViewBag.Message");
+    </script>
+}
+
+<h2>Welcome to HR portal...</h2>
+
+<br />
+<br />
+
+<div>
+    @Html.ActionLink("Go Back To Main Page", "NormalUerLoginPage", "Home")
+</div>
+
+

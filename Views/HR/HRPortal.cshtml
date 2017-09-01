@@ -1,0 +1,66 @@
+﻿@model UserMgmtMVC.Models.UserAssignRoleViewModel
+
+@{
+    ViewBag.Title = "HRPortal";
+}
+
+
+<h2>Please Login to again to access the HR Portal</h2>
+@*<h4>@TempData["AppId"]</h4>*@
+
+<br />
+<br />
+
+
+@Html.Partial("_LoginPartialView")
+
+
+
+
+
+
+@*<h2 style="text-align:center">Login</h2>
+
+<br />
+
+@using (Html.BeginForm("HRLogin", "HR", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true);
+    if (ViewBag.Message != null)
+    {
+        <div style="border:solid 1px red">
+            @ViewBag.Message
+
+        </div>
+    }
+
+    <div style="color:red">
+        @ViewData["Error"]
+    </div>
+    <table align="center">
+        <tr>
+            <td>@Html.LabelFor(a => a.Username)</td>
+            <td>@Html.TextBoxFor(a => a.Username)</td>
+            <td>@Html.ValidationMessageFor(a => a.Username)</td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Password)</td>
+            <td>@Html.TextBoxFor(a => a.Password)</td>
+            <td>@Html.ValidationMessageFor(a => a.Password)</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Login" />
+            </td>
+        </tr>
+    </table>
+}*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

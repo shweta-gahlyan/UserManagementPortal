@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <script type="text/javascript">
+        alert("@ViewBag.Message");
+        </script>
+    }
+</head>
+<body>
+    <hgroup>
+        <h2>Error.</h2>
+        <h3>An error ocurred while processing your request.</h3>
+        
+        @*<h2>Not Authorised to access this page...</h2>*@
+
+    </hgroup>
+    @Html.ActionLink("Go back", "NormalUerLoginPage", "Home")
+    <div> 
+    </div>
+</body>
+</html>

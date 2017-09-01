@@ -1,0 +1,51 @@
+﻿@model UserMgmtMVC.Models.UserAssignRoleViewModel
+
+@{
+    ViewBag.Title = "GetUsersToAssign";
+}
+
+@*<h2>GetUsersToAssign</h2>*@
+
+
+<div class="panel-body">
+    <br />
+    @using (Html.BeginForm("GetUsersToAssign", "Home",FormMethod.Post))
+    {
+        <div class="form-group" style="color:black">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-3">
+                    @Html.DropDownListFor(model => model.UserId,
+            new SelectList(ViewBag.usrs, "UserId", "Username"), "--Usernames--",
+                                    htmlAttributes: new { @class = "form-control" })
+
+                </div>
+
+                <div class="col-md-3">
+
+                    @Html.DropDownListFor(model => model.RoleId,
+                        new SelectList(ViewBag.roles, "RoleId", "RoleName"), "--Roles--",
+                                                htmlAttributes: new { @class = "form-control" })
+                </div>
+
+                <div class="col-md-2" style="text-align:center">
+
+                    <button class="btn btn-success" type="submit">Add Role</button>
+
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+
+
+<br />
+<br />
+
+@Html.ActionLink("Delete Roles", "DeleteUsersRoles", "Home") 
+
+<br />
+<br />
+
+@Html.ActionLink("Go Back", "NormalUerLoginPage")
+

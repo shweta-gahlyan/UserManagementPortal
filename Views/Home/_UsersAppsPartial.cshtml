@@ -1,0 +1,17 @@
+﻿@model UserMgmtMVC.Models.UserApplicationViewModel
+
+
+@using (Html.BeginForm("AppRedirection", "Home", FormMethod.Post))
+{
+
+
+@Html.DropDownListFor(model => model.UserApplicationId,
+            new SelectList(ViewBag.Apps, "UserApplicationId", "ApplicationName"), "Applications",
+                                    htmlAttributes: new { @class = "btn btn-default dropdown-toggle", style = "width: 150px;" })
+
+
+
+
+<input type="submit" id="RId" value="Login" />
+
+}

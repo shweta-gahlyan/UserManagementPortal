@@ -1,0 +1,82 @@
+﻿@model UserMgmtMVC.Models.UserAssignRoleViewModel
+
+@{
+    ViewBag.Title = "DeleteUsersRoles";
+}
+
+<h2>Delete Role of User :</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    @*<h4>UserAssignRoleViewModel</h4>*@
+    <hr />
+    @*<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleName)
+        </dd>
+
+    </dl>*@
+
+    @using (Html.BeginForm("DeleteRecord","Home",FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group" style="color:black">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-3">
+                    @Html.DropDownListFor(model => model.UserId,
+            new SelectList(ViewBag.usrs, "UserId", "Username"), "--Usernames--",
+                                    htmlAttributes: new { @class = "form-control" })
+
+                </div>
+
+                <div class="col-md-3">
+
+                    @Html.DropDownListFor(model => model.RoleId,
+                        new SelectList(ViewBag.roles, "RoleId", "RoleName"), "--Roles--",
+                                                htmlAttributes: new { @class = "form-control" })
+                </div>
+
+                <div class="col-md-2" style="text-align:center">
+
+                    <button class="btn btn-danger" type="submit">Delete Role</button>
+
+                </div>
+            </div>
+
+        </div>
+       
+
+        <div class="form-actions no-color">
+            @*<input type="submit" value="Delete" class="btn btn-default" /> |*@
+            @Html.ActionLink("Go Back", "GetUsersToAssign")
+        </div>
+    }
+</div>

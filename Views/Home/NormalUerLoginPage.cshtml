@@ -1,0 +1,70 @@
+﻿@model UserMgmtMVC.AppUser
+
+@{
+    ViewBag.Title = "NormalUerLoginPage";
+
+}
+
+
+<div class="text-center">
+    @if (Session["UserId"] != null)
+    {
+        @Html.Partial("_UsersAppsPartial")
+
+    }
+</div>
+
+
+@*<h4>@Session["RoleId"]</h4>*@
+
+
+
+<h2>Welcome To User Management Portal</h2>
+
+
+<br />
+<br />
+
+<h5>Only the Authorised employees can access the following the links:</h5>
+
+<br />
+<br />
+
+      <div class="form-group" style="color:black">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="~/Home/AdminLoginPage">Go to Admin Panel</a>
+                </div>
+
+                <div class="col-md-6">
+                    @Html.ActionLink("Personal Details", "GetDetails", new { id = Session["UserId"] })
+                </div>
+            </div>
+      </div>
+
+<br />
+  
+<div>
+    @Html.ActionLink("Company Users Details", "GetUsers", "Home")
+</div>
+    
+<br />
+<br />
+ <div>
+     @Html.ActionLink("Add Role to Users", "GetUsersToAssign", "Home")
+ </div>
+   
+    
+
+
+
+
+
+    @*@Html.ActionLink("Call through api", "Index", "HR")*@
+
+
+    @*<h4 style="text-align:right">
+            Hello @Session["LoggedUsername"]
+        </h4>
+        <br />
+        <br />*@
